@@ -427,16 +427,21 @@ public class Main {
 	private static void q25(){
 		Scanner in = new Scanner(System.in);
 		int testCases = Integer.parseInt(in.nextLine());
-		while(testCases>0){
+		String regex = "<(.+)>([^<>]+|[^<]+|[^>]+)</\\1>";
+        Pattern pattern = Pattern.compile(regex);
+		while(testCases>0 && testCases<=100){
 			String line = in.nextLine();         
-            String regex = "^<[A-Za-z][A-Za-z0-9]>$";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher m = pattern.matcher(line);	          
-	        if (m.find( )) {
-	           System.out.println(m.group());
-	        } else {
-	           System.out.println("Invalid");
-	        }
+			if(line.length() <= (Math.pow(10, 6))){
+				boolean found=false;
+	            Matcher m = pattern.matcher(line);	          
+	            while(m.find() && m.group(2).length() <= Math.pow(10, 4)){
+	            	System.out.println(m.group(2));
+	            	found = true;
+		        }
+	            if(!found){
+	        		System.out.println("None");
+	        	}
+			}
 			testCases--;
 		}
 	}
