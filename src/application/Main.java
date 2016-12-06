@@ -1,6 +1,7 @@
 package application;
 
 import java.security.Permission;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -10,13 +11,30 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class Main {
-	public static boolean flag;
-	static int B, H;
+	/*private static boolean flag = true;
+	private static int B,H;
+	
+	static {
+		Scanner in = new Scanner(System.in);
+		B = in.nextInt();
+		H = in.nextInt();
+		
+		try{
+			if(B <= 0 || H <= 0){
+				flag = false;
+				throw new Exception("Breadth and height must be positive");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		in.close();
+	}*/
 	
 	public static void main(String[] args) {
-		q16();
+		q25();
 	}
 	
 	public static void q1(){
@@ -265,13 +283,6 @@ public class Main {
 		}
 	}
 	
-	private static void q15(){
-		if(flag){
-			int area=B*H;
-			System.out.print(area);
-		}
-	}
-	
 	private static void q16(){
 		String regex = "\\b(\\w+)(\\b\\W+\\b\\1\\b)*";
         Pattern p = Pattern.compile(regex, Pattern.MULTILINE+Pattern.CASE_INSENSITIVE);
@@ -291,6 +302,149 @@ public class Main {
         }        
         in.close();
 	}
+	
+	private static void q17(){
+		Scanner in = new Scanner(System.in);
+	      int testCases = Integer.parseInt(in.nextLine());
+	      while(testCases>0){
+	         String username = in.nextLine();
+	         //String pattern = Complete this line in the editable area below  
+	         String pattern = "^[A-Za-z][A-Za-z0-9_]{7,29}$";
+	         Pattern r = Pattern.compile(pattern);
+	         Matcher m = r.matcher(username);
+	          
+	         if (m.find( )) {
+	            System.out.println("Valid");
+	         } else {
+	            System.out.println("Invalid");
+	         }
+	         testCases--;
+	      }
+	}
+	
+	private static void q18(){
+		Scanner in = new Scanner(System.in);
+	      int testCases = Integer.parseInt(in.nextLine());
+	      while(testCases>0){
+	         String pattern = in.nextLine();
+	         try{
+	        	 Pattern p = Pattern.compile(pattern);
+	        	 System.out.println("Valid");
+	         } catch (PatternSyntaxException exception) {
+	        	 System.out.println("Invalid");
+	         }
+	      }
+	      in.close();
+	}
+	
+	private static void q19(){
+		Scanner in = new Scanner(System.in);
+	      while(in.hasNext()){
+	          String IP = in.next();
+	          System.out.println(IP.matches(new MyRegex().pattern));
+	      }
+	}
+	
+	private static void q20(){
+		Scanner in = new Scanner(System.in);
+        String S = in.next();
+        int start = in.nextInt();
+        int end = in.nextInt();
+        String str = S.substring(start,end);
+        System.out.println(str);
+        in.close();
+	}
+	
+	private static void q21(){
+		Scanner scan = new Scanner(System.in);
+		if(!scan.hasNext()) { System.out.print(0);return;}
+        String s = scan.nextLine();
+        String str = s.trim();
+        String regx = "[ .,?!'@_]+";
+        String[] tokens = str.split(regx);
+        int len = tokens.length;
+        if(len<400000){
+        	System.out.println(len);
+	        for(int i=0; i<len; i++){
+	        	System.out.println(tokens[i]);
+	        }
+        }
+        scan.close();
+	}
+	
+	private static void q22(){
+		Scanner scanner = new Scanner(System.in);
+        double payment = scanner.nextDouble();
+        
+        NumberFormat USA = NumberFormat.getCurrencyInstance(Locale.US);
+        NumberFormat CHINA = NumberFormat.getCurrencyInstance(Locale.CHINA);
+        NumberFormat FRANCE = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+        NumberFormat INDIA = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
+        
+        String us = USA.format(payment);
+        String india = INDIA.format(payment); 
+        String china = CHINA.format(payment);
+        String france = FRANCE.format(payment);
+        
+        if(payment >= 0 && payment<=(Math.pow(10, 9))){
+	        System.out.println("US: " + us);
+	        System.out.println("India: " + india);
+	        System.out.println("China: " + china);
+	        System.out.println("France: " + france);
+        }
+        scanner.close();
+	}
+	
+	private static void q23(){
+		Scanner in = new Scanner(System.in);
+        int t=in.nextInt();
+        for(int i=0;i<t;i++){
+            int a = in.nextInt();
+            int b = in.nextInt();
+            int n = in.nextInt();
+            
+            for(int j=1;j<=n;j++){
+            	int s = a;
+            	int q = 1;
+            	for(int k=0;k<j;k++){
+            		s += (q*b);
+            		q = q*2;
+                }
+            	System.out.printf("%d ", s);            	
+            }
+            System.out.println();
+        }
+        in.close();
+	}
+	
+	private static void q24(){
+		/*if(flag){
+			int area=B*H;
+			System.out.print(area);
+		}*/
+	}
+	
+	private static void q25(){
+		Scanner in = new Scanner(System.in);
+		int testCases = Integer.parseInt(in.nextLine());
+		while(testCases>0){
+			String line = in.nextLine();         
+            String regex = "^<[A-Za-z][A-Za-z0-9]>$";
+            Pattern pattern = Pattern.compile(regex);
+            Matcher m = pattern.matcher(line);	          
+	        if (m.find( )) {
+	           System.out.println(m.group());
+	        } else {
+	           System.out.println("Invalid");
+	        }
+			testCases--;
+		}
+	}
+}
+
+class MyRegex{
+	String zeroTo255 = "([0-9]|[0-9][0-9]|(0|1)[0-9][0-9]|2[0-4][0-9]|25[0-5])"; 
+	public String pattern = zeroTo255+"."+zeroTo255+"."+zeroTo255+"."+zeroTo255;	
 }
 
 class DoNotTerminate {
