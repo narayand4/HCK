@@ -1,5 +1,6 @@
 package application;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.Permission;
 import java.text.NumberFormat;
@@ -35,7 +36,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q26();
+		q27();
 	}
 	
 	public static void q1(){
@@ -456,6 +457,27 @@ public class Main {
 			System.out.println(mul.multiply(sum));			
 		}
 		in.close();
+	}
+	
+	private static void q27(){
+		//Input
+		BigDecimal a;
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        String []s=new String[n+2];
+        for(int i=0;i<n;i++){
+            s[i]= new BigDecimal(sc.next());            		
+        }
+      	sc.close();
+      	
+      	// sorting array
+      	Arrays.sort(s);
+        
+      	//Output
+	    for(int i=0;i<n;i++)
+	    {
+	        System.out.println(s[i]);
+	    }
 	}
 }
 
