@@ -1,5 +1,6 @@
 package application;
 
+import java.math.BigInteger;
 import java.security.Permission;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -34,7 +35,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q25();
+		q26();
 	}
 	
 	public static void q1(){
@@ -444,6 +445,17 @@ public class Main {
 			}
 			testCases--;
 		}
+	}
+	
+	private static void q26(){
+		Scanner in = new Scanner(System.in);
+		for(int i=0;i<1;i++){	
+			BigInteger sum = in.nextBigInteger();
+			BigInteger mul = in.nextBigInteger();			
+			System.out.println(sum.add(mul));
+			System.out.println(mul.multiply(sum));			
+		}
+		in.close();
 	}
 }
 
