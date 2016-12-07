@@ -38,7 +38,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q27();
+		q31();
 	}
 	
 	public static void q1(){
@@ -470,28 +470,107 @@ public class Main {
         }
       	sc.close();
       	
-/*      	BigDecimal []a = null;
-      	for(int i=0;i<n;i++){
-      		if(s[i]!=null)
-      		a[i] = new BigDecimal(s[i]);
-      	}*/
+      	Arrays.sort(s, 0, n, new Comparator<String>() {
+            public int compare(String s1, String s2) {
+                BigDecimal bd1 = new BigDecimal(s1);
+                BigDecimal bd2 = new BigDecimal(s2);
+                return bd1.compareTo(bd2) == 1 ? -1:bd1.compareTo(bd2) == -1 ? 1:0;                
+            }
+        });
       	
-      	try {
-      		Arrays.sort(s, Collections.reverseOrder(new Comparator<String>() {
-          	    @Override
-          	    public int compare(String a1, String a2) {
-          	    	BigDecimal a = new BigDecimal(a1);
-          	        BigDecimal b = new BigDecimal(a2);
-          	        return a.compareTo(b);
-          	    }
-          	}));
-		} catch (Exception e) {}
-      	        
       	//Output
 	    for(int i=0;i<n;i++)
 	    {
 	        System.out.println(s[i]);
 	    }
+	}
+	
+	private static void q28(){
+		Scanner in = new Scanner(System.in);
+        long a = in.nextLong();
+        long b = in.nextLong();
+        long c = in.nextLong();
+        long d = in.nextLong();
+        long e = in.nextLong();
+        
+        long []sumAll = new long[5];
+        sumAll[0] = b+c+d+e;
+        sumAll[1] = a+c+d+e;
+        sumAll[2] = a+b+d+e;
+        sumAll[3] = a+b+c+e;
+        sumAll[4] = a+b+c+d;
+        
+        Arrays.sort(sumAll);
+        
+        System.out.println(sumAll[0]+" "+sumAll[4]);
+	}
+	
+	private static void q29(){
+		Scanner in = new Scanner(System.in);
+	    BigInteger n = in.nextBigInteger();
+	    in.close();
+	    if(n.isProbablePrime(1)){
+	    	System.out.println("prime");
+	    }else{
+	    	System.out.println("not prime");
+	    }
+	}
+	
+	private static void q30(){
+		Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        
+       int []a = new int[n];
+        for(int i = 0 ; i < n; i++){
+            int val = scan.nextInt();
+            a[i] = val;
+        }
+        
+        
+        scan.close();
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+	}
+	
+	private static void q31(){
+		Scanner in = new Scanner(System.in);
+        int arr[][] = new int[6][6];
+        for(int i=0; i < 6; i++){
+            for(int j=0; j < 6; j++){
+                arr[i][j] = in.nextInt();
+            }
+        }
+        
+        int result[] = new int[2];
+        for(int k=0; k<3; k++){
+        	for(int j=0; j<3;j++){
+        		result[0] += arr[k][j];  
+        	}
+        	for(int j=3; j<6;j++){
+        		result[0] += arr[k][j];
+        	}
+        }
+        for(int k=1; k<4; k++){
+        	for(int j=0; j<3;j++){
+        		result[1] += arr[k][j];
+        	}
+        	for(int j=3; j<6;j++){
+        		result[1] += arr[k][j];
+        	}
+        }
+        for(int k=2; k<5; k++){
+        	for(int j=0; j<3;j++){
+        		result[2] += arr[k][j];
+        	}
+        	for(int j=3; j<6;j++){
+        		result[2] += arr[k][j];
+        	}
+        }
+        
+        System.out.println(result[0]);
+        System.out.println(result[1]);
+        System.out.println(result[2]);
 	}
 }
 
