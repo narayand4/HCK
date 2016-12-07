@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -460,19 +462,31 @@ public class Main {
 	}
 	
 	private static void q27(){
-		//Input
-		BigDecimal a;
-        Scanner sc= new Scanner(System.in);
+		Scanner sc= new Scanner(System.in);
         int n=sc.nextInt();
         String []s=new String[n+2];
         for(int i=0;i<n;i++){
-            s[i]= new BigDecimal(sc.next());            		
+            s[i]= sc.next();            		
         }
       	sc.close();
       	
-      	// sorting array
-      	Arrays.sort(s);
-        
+/*      	BigDecimal []a = null;
+      	for(int i=0;i<n;i++){
+      		if(s[i]!=null)
+      		a[i] = new BigDecimal(s[i]);
+      	}*/
+      	
+      	try {
+      		Arrays.sort(s, Collections.reverseOrder(new Comparator<String>() {
+          	    @Override
+          	    public int compare(String a1, String a2) {
+          	    	BigDecimal a = new BigDecimal(a1);
+          	        BigDecimal b = new BigDecimal(a2);
+          	        return a.compareTo(b);
+          	    }
+          	}));
+		} catch (Exception e) {}
+      	        
       	//Output
 	    for(int i=0;i<n;i++)
 	    {
