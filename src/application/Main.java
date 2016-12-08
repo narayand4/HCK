@@ -542,35 +542,45 @@ public class Main {
             }
         }
         
-        int result[] = new int[2];
-        for(int k=0; k<3; k++){
-        	for(int j=0; j<3;j++){
-        		result[0] += arr[k][j];  
-        	}
-        	for(int j=3; j<6;j++){
-        		result[0] += arr[k][j];
-        	}
-        }
-        for(int k=1; k<4; k++){
-        	for(int j=0; j<3;j++){
-        		result[1] += arr[k][j];
-        	}
-        	for(int j=3; j<6;j++){
-        		result[1] += arr[k][j];
-        	}
-        }
-        for(int k=2; k<5; k++){
-        	for(int j=0; j<3;j++){
-        		result[2] += arr[k][j];
-        	}
-        	for(int j=3; j<6;j++){
-        		result[2] += arr[k][j];
-        	}
-        }
+        int result[] = new int[16];        
+        result[0] = addArrayElement(arr,0,3,0,3);
+        result[1] = addArrayElement(arr,0,3,1,4);
+        result[2] = addArrayElement(arr,0,3,2,5);
+        result[3] = addArrayElement(arr,0,3,3,6);
         
-        System.out.println(result[0]);
-        System.out.println(result[1]);
-        System.out.println(result[2]);
+        result[4] = addArrayElement(arr,1,4,0,3);
+        result[5] = addArrayElement(arr,1,4,1,4);
+        result[6] = addArrayElement(arr,1,4,2,5);
+        result[7] = addArrayElement(arr,1,4,3,6);
+        
+        result[8] = addArrayElement(arr,2,5,0,3);
+        result[9] = addArrayElement(arr,2,5,1,4);
+        result[10] = addArrayElement(arr,2,5,2,5);
+        result[11] = addArrayElement(arr,2,5,3,6);
+        
+        result[12] = addArrayElement(arr,3,6,0,3);
+        result[13] = addArrayElement(arr,3,6,1,4);
+        result[14] = addArrayElement(arr,3,6,2,5);
+        result[15] = addArrayElement(arr,3,6,3,6);
+        
+        Arrays.sort(result);
+        System.out.println(result[15]);
+	}
+	
+	private static int addArrayElement(int arr[][], int a, int b, int c, int d){
+		int result = 0;
+		int i = 1;
+		for(int k=a; k<b; k++){
+			if(i==2){
+				result += arr[k][c+1];				
+			}else{
+				for(int j=c; j<d;j++){        		  
+	        		result += arr[k][j];	        		        		
+	        	}
+			}        	
+        	i++;        	   	
+        }
+		return result;
 	}
 }
 
