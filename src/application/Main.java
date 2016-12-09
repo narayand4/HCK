@@ -6,6 +6,7 @@ import java.security.Permission;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
@@ -38,7 +39,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q32();
+		q33();
 	}
 	
 	public static void q1(){
@@ -609,6 +610,24 @@ public class Main {
 	    }
 
 	    System.out.print(count);
+	}
+	
+	private static void q33(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		System.out.println("n: "+n);
+		for(int i=0; i<n+1; i++){
+			String lnd = in.nextLine();
+			System.out.println("d: "+lnd);
+			//ArrayList al = new ArrayList();
+		}
+		int q = in.nextInt();
+		System.out.println("q: "+q);
+		for(int j=0; j<q+1; j++){
+			String lnq = in.nextLine();
+			System.out.println("x,y: "+lnq);
+		}
+		in.close();
 	}
 }
 
