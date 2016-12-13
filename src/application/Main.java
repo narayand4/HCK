@@ -632,7 +632,33 @@ public class Main {
 	
 	private static void q34(){
 		Scanner in = new Scanner(System.in);
-		int n = in.nextInt();
+		int T = in.nextInt();
+		//System.out.println("n: "+T);
+		if(T >= 1 && T <= 5000){
+			for(int i=0; i<T; i++){
+				int n = in.nextInt();
+				int m = in.nextInt();				
+				if(n >= 2 && n <= 100){
+					/*System.out.print(n);
+					System.out.print(" ");
+					System.out.print(m);
+					System.out.println("");*/
+					
+					if(m >= 0 && m <= 100){
+						ArrayList<Integer> am = new ArrayList<Integer>(n);
+						for(int k=0;k<n;k++){
+							int a = in.nextInt();
+							if(a==0 || a==1){
+								am.add(a);
+							}
+						}
+						System.out.println(am);
+					}	
+					for(int arr=0; arr < am)
+				}
+			}
+		}
+		in.close();
 	}
 }
 
