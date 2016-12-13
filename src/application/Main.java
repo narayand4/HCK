@@ -39,7 +39,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q33();
+		q34();
 	}
 	
 	public static void q1(){
@@ -628,6 +628,11 @@ public class Main {
 			System.out.println("x,y: "+lnq);
 		}
 		in.close();
+	}
+	
+	private static void q34(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
 	}
 }
 
