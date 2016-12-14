@@ -633,28 +633,35 @@ public class Main {
 	private static void q34(){
 		Scanner in = new Scanner(System.in);
 		int T = in.nextInt();
-		//System.out.println("n: "+T);
 		if(T >= 1 && T <= 5000){
 			for(int i=0; i<T; i++){
 				int n = in.nextInt();
 				int m = in.nextInt();				
 				if(n >= 2 && n <= 100){
-					/*System.out.print(n);
-					System.out.print(" ");
-					System.out.print(m);
-					System.out.println("");*/
-					
+					ArrayList<Integer> am = new ArrayList<Integer>(n);
 					if(m >= 0 && m <= 100){
-						ArrayList<Integer> am = new ArrayList<Integer>(n);
 						for(int k=0;k<n;k++){
 							int a = in.nextInt();
 							if(a==0 || a==1){
 								am.add(a);
 							}
-						}
-						System.out.println(am);
+						}						
 					}	
-					for(int arr=0; arr < am)
+					int index = 0;
+					int tIndex = 0;
+					while((index < am.size())){						
+						if(index==0 && am.get(index)==0)
+							tIndex++;
+						index = index+1; 
+					}
+					
+					boolean isWin = false;
+					if((tIndex+m > (am.size()-1)) || (tIndex == (am.size()-1)))
+						isWin = true;
+					if(isWin)
+						System.out.println("YES");
+					else
+						System.out.println("NO");
 				}
 			}
 		}
