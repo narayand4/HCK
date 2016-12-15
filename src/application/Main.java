@@ -647,25 +647,29 @@ public class Main {
 							}
 						}						
 					}	
-					int index = 0;
-					int tIndex = 0;
-					while((index < am.size())){						
-						if(index==0 && am.get(index)==0)
-							tIndex++;
-						index = index+1; 
-					}
-					
-					boolean isWin = false;
-					if((tIndex+m > (am.size()-1)) || (tIndex == (am.size()-1)))
-						isWin = true;
-					if(isWin)
+										
+					if(isWin(m, am, 0)){
 						System.out.println("YES");
-					else
+					}else{
 						System.out.println("NO");
+					}
 				}
 			}
 		}
 		in.close();
+	}
+	
+	private static boolean isWin(int m, ArrayList<Integer> am, int i) {
+		if(i < 0 || am.get(i)==1) 
+			return false;
+		if(i==am.size()-1 || i+m > am.size())
+			return true;		
+		am.set(i, 1);
+		try {
+			return isWin(m, am, i+1) || isWin(m, am, i-1) || isWin(m, am, i+m);
+		} catch (Exception e) {
+			return true;
+		}		
 	}
 }
 
