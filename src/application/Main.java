@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Deque;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -41,7 +42,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q35();
+		q36();
 	}
 	
 	public static void q1(){
@@ -674,17 +675,78 @@ public class Main {
 		}		
 	}
 	
+	//4675
 	private static void q35(){
 		Scanner in = new Scanner(System.in);
-        Deque deque = new ArrayDeque<>();
         int n = in.nextInt();
-        int m = in.nextInt();        
+        int m = in.nextInt();       
+        ArrayList<Integer> arr = new ArrayList<Integer>(n);
         if((n>=1 && n<=100000) && ((m>=1 && m<=100000) && (m<=n))){
 	        for (int i = 0; i < n; i++) {
 	        	int num = in.nextInt();
-	        	//deque.
+	        	arr.add(num);
 	        }
         }
+        
+        int l = 1;
+        for(int j=0; j<arr.size(); j++){
+        	Deque deque = new ArrayDeque<>();
+        	Deque deque2 = uniqueArr(deque, m, arr, 0, j);
+        	int k = 1;
+        	if(deque2.size()==m){
+        		k = maxDeque(deque2,k);
+        		if(k+1==m){
+        			l++;
+        		}
+        	}        	
+        }
+        System.out.println(l);
+	}
+	private static Deque uniqueArr(Deque deque, int m, ArrayList<Integer> arr, int i, int j){
+		if(i<m && i+j < arr.size()){
+			deque.add(arr.get(i+j)); i++;
+			return uniqueArr(deque, m, arr, i, j);
+		}else
+			return deque;
+	}
+	private static int maxDeque(Deque deque, int i){
+		if((deque.size()>1) && (deque.getFirst()!=null) && (deque.getLast()!=null)){
+			int firstElement = (int) deque.getFirst();
+			int lastElement = (int) deque.getLast();
+			deque.removeFirst(); 
+			deque.removeLast();
+			if(firstElement!=lastElement){
+				i++;			
+			}			
+			return maxDeque(deque, i);
+		}else{
+			return i;
+		}		
+	}
+	
+	private static void q36(){
+		Scanner in = new Scanner(System.in);
+        Deque<Integer> deque = new ArrayDeque<>();
+        HashSet<Integer> set = new HashSet<>();
+        
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            int input = in.nextInt();
+            
+            deque.add(input);
+            set.add(input);
+            
+            if (deque.size() == m) {
+                if (set.size() > max) max = set.size();
+                int first = deque.remove();
+                if (!deque.contains(first)) set.remove(first);
+            }
+        }
+        
+        System.out.println(max);
 	}
 }
 
