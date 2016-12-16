@@ -6,12 +6,14 @@ import java.security.Permission;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Deque;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -39,7 +41,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q34();
+		q35();
 	}
 	
 	public static void q1(){
@@ -670,6 +672,19 @@ public class Main {
 		} catch (Exception e) {
 			return true;
 		}		
+	}
+	
+	private static void q35(){
+		Scanner in = new Scanner(System.in);
+        Deque deque = new ArrayDeque<>();
+        int n = in.nextInt();
+        int m = in.nextInt();        
+        if((n>=1 && n<=100000) && ((m>=1 && m<=100000) && (m<=n))){
+	        for (int i = 0; i < n; i++) {
+	        	int num = in.nextInt();
+	        	//deque.
+	        }
+        }
 	}
 }
 
