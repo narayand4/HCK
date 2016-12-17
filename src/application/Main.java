@@ -15,6 +15,9 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Deque;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -42,7 +45,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q36();
+		q37();
 	}
 	
 	public static void q1(){
@@ -747,6 +750,29 @@ public class Main {
         }
         
         System.out.println(max);
+	}
+	
+	private static void q37(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		ArrayList l1 = new ArrayList();
+		if(n>=1 && n<=4000){
+			for(int i=0;i<n;i++)
+				l1.add(i, in.nextInt());			
+			int q = in.nextInt();
+			if(q>=1 && q<=4000){
+				for(int j=0;j<q;j++){	
+					String sText = in.next();
+					if(sText.equals("Insert"))
+						l1.add(in.nextInt(), in.nextInt());
+					else if(sText.equals("Delete"))
+						l1.remove(in.nextInt());					
+				}
+			}
+		}
+		Iterator it = l1.iterator();
+		while(it.hasNext())
+			System.out.print((Integer)it.next()+" ");			
 	}
 }
 
