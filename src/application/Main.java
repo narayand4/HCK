@@ -799,6 +799,45 @@ public class Main {
 		}
 	}
 	
+	/*
+	 * [({})(())]
+		(({()})))[[
+		({(){}()})()({(){}()})(){()}{}((()))
+		{}()))(()()({}}{}
+		}}}}
+		))))
+		{{{
+		(((
+		{}(){()}((())){{{}}}{()()}{{}{}}
+		{{{{{{{)))))))))))))))))))
+		{}{}(
+		{}}}{}
+		()()()())))
+		(((((()()()
+		(){}{{}}()(()){{()()}}
+		{}{{{}}}{{{((()))}}}
+		((()))[]
+		{{}}(()[])
+		
+		true
+		false
+		true
+		false
+		false
+		false
+		false
+		false
+		true
+		false
+		false
+		false
+		false
+		false
+		true
+		true
+		true
+		true
+	 */
 	private static void q39(){
 		Scanner sc = new Scanner(System.in);	      
 	    while (sc.hasNext()) {
@@ -814,55 +853,38 @@ public class Main {
 	    }
 	}
 	private static boolean strCheck(Stack arr, int i){
-		if(arr.size() > 0){
-			switch((String)arr.peek()){
-				case "[":
-						if(arr.search("]") > 0){
-							arr.remove(arr.size()-1);
-							arr.remove(arr.size()-arr.search("["));
-							i = i-2;
-						}
-						break;
-				case "]":
-					if(arr.search("[") > 0){
-						arr.remove(arr.size()-1);
-						arr.remove(arr.size()-arr.search("["));
-						i = i-2;
-					}
+		System.out.println(i);
+		switch((String)arr.peek()){
+			case "[":
+					searchText("]", arr, i);						
 					break;
-				case "{":
-					if(arr.search("{") > 0){
-						arr.remove(arr.size()-1);
-						arr.remove(arr.size()-arr.search("{"));
-						i = i-2;
-					}
-					break;
-				case "}":
-					if(arr.search("}") > 0){
-						arr.remove(arr.size()-1);
-						arr.remove(arr.size()-arr.search("}"));
-						i = i-2;
-					}
-					break;
-				case "(":
-					if(arr.search("(") > 0){
-						arr.remove(arr.size()-1);
-						arr.remove(arr.size()-arr.search("("));
-						i = i-2;
-					}
-					break;
-				case ")":
-					if(arr.search(")") > 0){
-						arr.remove(arr.size()-1);
-						arr.remove(arr.size()-arr.search(")"));
-						i = i-2;
-					}
-					break;
-			}
-			System.out.println(arr);
-			return false; //strCheck(arr, i);
-		}else{
-			return false;
+			case "]":
+				searchText("[", arr, i);
+				break;
+			case "{":
+				searchText("}", arr, i);
+				break;
+			case "}":
+				searchText("{", arr, i);
+				break;
+			case "(":
+				searchText(")", arr, i);
+				break;
+			case ")":
+				searchText("(", arr, i);
+				break;
+		}
+		
+		if(i == 0)
+			return true;
+		else
+			return strCheck(arr, i);
+	}
+	private static void searchText(String sText, Stack arr, int i){
+		if(arr.search(sText) > 0){
+			arr.remove(arr.size()-1);
+			arr.remove(arr.size()-arr.search(sText));
+			i = i-2;
 		}
 	}
 }
