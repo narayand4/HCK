@@ -14,12 +14,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -45,7 +47,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q37();
+		q39();
 	}
 	
 	public static void q1(){
@@ -773,6 +775,95 @@ public class Main {
 		Iterator it = l1.iterator();
 		while(it.hasNext())
 			System.out.print((Integer)it.next()+" ");			
+	}
+	
+	private static void q38(){
+		Scanner in = new Scanner(System.in);
+		int n=in.nextInt();
+		HashMap hm = new HashMap();
+		in.nextLine();
+		for(int i=0;i<n;i++)
+		{
+			String name=in.nextLine();
+			int phone=in.nextInt();
+			in.nextLine();
+			hm.put(name, phone);
+		}
+		while(in.hasNext())
+		{
+			String s=in.nextLine();
+			if(hm.get(s)!=null){
+				System.out.println(s+"="+hm.get(s));
+			}else
+				System.out.println("Not found");
+		}
+	}
+	
+	private static void q39(){
+		Scanner sc = new Scanner(System.in);	      
+	    while (sc.hasNext()) {
+	    	String input=sc.next();
+	    	Stack nStack = new Stack();
+	    	for(int i=0; i<input.split("").length; i++)
+	    		nStack.push(input.split("")[i]);
+	    	
+	    	if(strCheck(nStack, nStack.size()))
+	    		System.out.println("true");
+	    	else
+	    		System.out.println("false");
+	    }
+	}
+	private static boolean strCheck(Stack arr, int i){
+		if(arr.size() > 0){
+			switch((String)arr.peek()){
+				case "[":
+						if(arr.search("]") > 0){
+							arr.remove(arr.size()-1);
+							arr.remove(arr.size()-arr.search("["));
+							i = i-2;
+						}
+						break;
+				case "]":
+					if(arr.search("[") > 0){
+						arr.remove(arr.size()-1);
+						arr.remove(arr.size()-arr.search("["));
+						i = i-2;
+					}
+					break;
+				case "{":
+					if(arr.search("{") > 0){
+						arr.remove(arr.size()-1);
+						arr.remove(arr.size()-arr.search("{"));
+						i = i-2;
+					}
+					break;
+				case "}":
+					if(arr.search("}") > 0){
+						arr.remove(arr.size()-1);
+						arr.remove(arr.size()-arr.search("}"));
+						i = i-2;
+					}
+					break;
+				case "(":
+					if(arr.search("(") > 0){
+						arr.remove(arr.size()-1);
+						arr.remove(arr.size()-arr.search("("));
+						i = i-2;
+					}
+					break;
+				case ")":
+					if(arr.search(")") > 0){
+						arr.remove(arr.size()-1);
+						arr.remove(arr.size()-arr.search(")"));
+						i = i-2;
+					}
+					break;
+			}
+			System.out.println(arr);
+			return false; //strCheck(arr, i);
+		}else{
+			return false;
+		}
 	}
 }
 
