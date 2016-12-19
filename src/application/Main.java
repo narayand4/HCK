@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.regex.Matcher;
@@ -853,35 +854,22 @@ public class Main {
 	    }
 	}
 	private static boolean strCheck(Stack arr, int i){
-		System.out.println(i);
-		switch((String)arr.peek()){
-			case "[":
-					searchText("]", arr, i);						
-					break;
-			case "]":
-				searchText("[", arr, i);
-				break;
-			case "{":
-				searchText("}", arr, i);
-				break;
-			case "}":
-				searchText("{", arr, i);
-				break;
-			case "(":
-				searchText(")", arr, i);
-				break;
-			case ")":
-				searchText("(", arr, i);
-				break;
-		}
-		
-		if(i == 0)
+		searchText((String)arr.peek(), arr, i);
+		System.out.println(arr);
+		return false;
+		/*if(i == 0)
 			return true;
 		else
-			return strCheck(arr, i);
+			return strCheck(arr, i);*/
 	}
 	private static void searchText(String sText, Stack arr, int i){
-		if(arr.search(sText) > 0){
+		Map<String, String> aMap = new HashMap<String, String>();
+		aMap.put("{", "}");
+		aMap.put("[", "]");
+		aMap.put("(", ")");
+		aMap.put("a", "b");
+		System.out.println(aMap.get(sText.toString()));
+		if(arr.search(aMap.get(sText)) > 0){
 			arr.remove(arr.size()-1);
 			arr.remove(arr.size()-arr.search(sText));
 			i = i-2;
