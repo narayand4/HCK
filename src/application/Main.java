@@ -48,7 +48,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q41();
+		q43();
 	}
 	
 	public static void q1(){
@@ -877,6 +877,40 @@ public class Main {
         	b = ((b0>a0) ? 1 : 0) + ((b1>a1) ? 1 : 0) + ((b2>a2) ? 1 : 0);
         }
         System.out.println(a+" "+b);
+	}
+	
+	private static void q42(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		long sum = 0;
+		if(n>=1 && n<=10){
+			for(int i=0;i<n;i++){		
+				long a = in.nextLong();				
+				sum = sum+(a);
+			}
+		}
+		System.out.println(sum);
+	}
+	
+	private static void q43(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int[][] arr = new int[n][n];
+		for(int i=0;i<n;i++){	
+			for(int j=0;j<n;j++){	
+				int b = in.nextInt();
+				arr[i][j] = b;
+			}			
+		}
+		
+		int d1 = 0;
+		int d2 = 0;
+		for(int i=0;i<n;i++){	
+			d1 = d1+arr[i][i];
+			d2 = d2+arr[i][n-1-i];		
+		}
+		
+		System.out.println(Math.abs(d2-d1));
 	}
 }
 
