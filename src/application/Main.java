@@ -48,7 +48,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q39();
+		q41();
 	}
 	
 	public static void q1(){
@@ -800,45 +800,6 @@ public class Main {
 		}
 	}
 	
-	/*
-	 * [({})(())]
-		(({()})))[[
-		({(){}()})()({(){}()})(){()}{}((()))
-		{}()))(()()({}}{}
-		}}}}
-		))))
-		{{{
-		(((
-		{}(){()}((())){{{}}}{()()}{{}{}}
-		{{{{{{{)))))))))))))))))))
-		{}{}(
-		{}}}{}
-		()()()())))
-		(((((()()()
-		(){}{{}}()(()){{()()}}
-		{}{{{}}}{{{((()))}}}
-		((()))[]
-		{{}}(()[])
-		
-		true
-		false
-		true
-		false
-		false
-		false
-		false
-		false
-		true
-		false
-		false
-		false
-		false
-		false
-		true
-		true
-		true
-		true
-	 */
 	private static void q39(){
 		Scanner sc = new Scanner(System.in);	      
 	    while (sc.hasNext()) {
@@ -847,33 +808,75 @@ public class Main {
 	    	for(int i=0; i<input.split("").length; i++)
 	    		nStack.push(input.split("")[i]);
 	    	
-	    	if(strCheck(nStack, nStack.size()))
+	    	if(strCheck(nStack, 0))
 	    		System.out.println("true");
 	    	else
 	    		System.out.println("false");
 	    }
 	}
-	private static boolean strCheck(Stack arr, int i){
-		searchText((String)arr.peek(), arr, i);
-		System.out.println(arr);
-		return false;
-		/*if(i == 0)
+	private static boolean strCheck(Stack arr, int j){
+		if(j>0)
+			return false;
+		if(arr.size()==0)
 			return true;
-		else
-			return strCheck(arr, i);*/
-	}
-	private static void searchText(String sText, Stack arr, int i){
-		Map<String, String> aMap = new HashMap<String, String>();
-		aMap.put("{", "}");
-		aMap.put("[", "]");
-		aMap.put("(", ")");
-		aMap.put("a", "b");
-		System.out.println(aMap.get(sText.toString()));
-		if(arr.search(aMap.get(sText)) > 0){
-			arr.remove(arr.size()-1);
-			arr.remove(arr.size()-arr.search(sText));
-			i = i-2;
+		switch((String)arr.peek()){
+			case "[":
+					j = searchText("]", arr, j);						
+					break;
+			case "]":
+					j = searchText("[", arr, j);
+					break;
+			case "{":
+					j = searchText("}", arr, j);
+					break;
+			case "}":
+					j = searchText("{", arr, j);   
+					break;
+			case "(":
+					j = searchText(")", arr, j);
+					break;
+			case ")":
+					j = searchText("(", arr, j);
+					break;
 		}
+		return strCheck(arr, j);		
+	}
+	private static int searchText(String sText, Stack arr, int j){
+		if(arr.search(sText) > 0){
+			arr.remove(arr.size()-1);
+			arr.remove(arr.size()-arr.search(sText));			
+		}else{
+			j++;
+		}
+		return j;
+	}
+	
+	private static void q40(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int sum = 0;
+		for(int i=0;i<n;i++){
+			sum = sum+(in.nextInt());
+		}
+		System.out.println(sum);
+	}
+	
+	private static void q41(){
+		Scanner in = new Scanner(System.in);
+        int a0 = in.nextInt();
+        int a1 = in.nextInt();
+        int a2 = in.nextInt();
+        int b0 = in.nextInt();
+        int b1 = in.nextInt();
+        int b2 = in.nextInt();
+        
+        int a=0;
+        int b=0;
+        if(a0 >=1 && b0 >=1 && a1>=1 && b1>=1 && a2>=1 && b2 >=1 && a0 <=100 && b0 <=100 && a1<=100 && b1<=100 && a2<=100 && b2<=100){	        
+        	a = ((a0>b0) ? 1 : 0) + ((a1>b1) ? 1 : 0) + ((a2>b2) ? 1 : 0);
+        	b = ((b0>a0) ? 1 : 0) + ((b1>a1) ? 1 : 0) + ((b2>a2) ? 1 : 0);
+        }
+        System.out.println(a+" "+b);
 	}
 }
 
