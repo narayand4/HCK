@@ -3,6 +3,7 @@ package application;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.Permission;
+import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,7 +49,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q43();
+		q46();
 	}
 	
 	public static void q1(){
@@ -911,6 +912,51 @@ public class Main {
 		}
 		
 		System.out.println(Math.abs(d2-d1));
+	}
+	
+	private static void q44(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		double p = 0,m = 0,z = 0;
+		for(int i=0;i<n;i++){
+			int b = in.nextInt();
+			if(b<0) m++; else if(b==0) z++; else p++;
+		}
+		double pf,mf,zf;
+		pf = (p/n); mf = (m/n); zf = (z/n);
+		System.out.printf("%.6f\n%.6f\n%.6f\n",pf,mf,zf);		
+	}
+	
+	private static void q45(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int a=n-1;
+		for(int i=0;i<n;i++){
+			for(int k=0;k<a;k++){				
+					System.out.print(" ");				
+			}
+			for(int j=0;j<=i;j++){
+				System.out.print("#");				
+			}
+			a--;
+			System.out.println();
+		}
+	}
+	
+	private static void q46(){
+		Scanner in = new Scanner(System.in);
+		String dateStr = in.nextLine();
+		DateFormat readFormat = new SimpleDateFormat( "hh:mm:ss aa");
+		DateFormat writeFormat = new SimpleDateFormat( "HH:mm:ss");
+		Date date = null;
+		try {
+			date = readFormat.parse(dateStr);
+		} catch (ParseException e) {
+		    e.printStackTrace();
+		}
+		if (date != null) {
+		    System.out.println(writeFormat.format(date));
+		}
 	}
 }
 
