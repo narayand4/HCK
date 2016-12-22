@@ -962,23 +962,21 @@ public class Main {
 		int n = in.nextInt();
 		int k = in.nextInt();
 		int q = in.nextInt();
-		int[] array = new int[n];
+		List<Object> list = new ArrayList<Object>();
 		if((n>=1 && n<=Math.pow(10, 5)) && (k>=1 && k<=Math.pow(10, 5)) && (q>=1 && q<=500)){
 			for(int i=0; i<n; i++){
 				int a = in.nextInt();
 				if(a>=1 && a<=Math.pow(10, 5)){
-					array[i] = a;
+					list.add(a);
 				}
 			}
-			for(int i=0; i<k; i++){
-				Collections.reverse(Arrays.asList(array));
-				System.out.println(array);
+			if(k%2==0){
+				Collections.reverse(list);	
+				System.out.println(list);
 			}
 			for(int i=0; i<q; i++){
 				int m = in.nextInt();
-				//if(a>=0 && a<=Math.pow(10, 5)){
-					System.out.println(array[m]);
-				//}
+				System.out.println(list.get(m));
 			}
 		}
 	}
