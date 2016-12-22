@@ -49,7 +49,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q46();
+		q47();
 	}
 	
 	public static void q1(){
@@ -945,17 +945,41 @@ public class Main {
 	
 	private static void q46(){
 		Scanner in = new Scanner(System.in);
-		String dateStr = in.nextLine();
-		DateFormat readFormat = new SimpleDateFormat( "hh:mm:ss aa");
-		DateFormat writeFormat = new SimpleDateFormat( "HH:mm:ss");
-		Date date = null;
+		String str = in.nextLine();
+		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm:ss");
+	    SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm:ssa");
+	    Date date = null;
 		try {
-			date = readFormat.parse(dateStr);
+			date = parseFormat.parse(str);
 		} catch (ParseException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
-		if (date != null) {
-		    System.out.println(writeFormat.format(date));
+	    System.out.println(displayFormat.format(date));
+	}
+	
+	private static void q47(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int k = in.nextInt();
+		int q = in.nextInt();
+		int[] array = new int[n];
+		if((n>=1 && n<=Math.pow(10, 5)) && (k>=1 && k<=Math.pow(10, 5)) && (q>=1 && q<=500)){
+			for(int i=0; i<n; i++){
+				int a = in.nextInt();
+				if(a>=1 && a<=Math.pow(10, 5)){
+					array[i] = a;
+				}
+			}
+			for(int i=0; i<k; i++){
+				Collections.reverse(Arrays.asList(array));
+				System.out.println(array);
+			}
+			for(int i=0; i<q; i++){
+				int m = in.nextInt();
+				//if(a>=0 && a<=Math.pow(10, 5)){
+					System.out.println(array[m]);
+				//}
+			}
 		}
 	}
 }
