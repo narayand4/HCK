@@ -970,15 +970,24 @@ public class Main {
 					list.add(a);
 				}
 			}
-			if(k%2==0){
-				Collections.reverse(list);	
-				System.out.println(list);
-			}
+			list = isReverse(list,k,n);
 			for(int i=0; i<q; i++){
 				int m = in.nextInt();
-				System.out.println(list.get(m));
+				if(m<=n-1)
+					System.out.println(list.get(m));
 			}
+		} 
+	}
+	private static List<Object> isReverse(List<Object> list, int k, int n){
+		if(k==0)
+			return list;
+		
+		if(k>0){
+			int l = (int) list.get(n-1);
+			list.remove(n-1);
+			list.add(0,l);			
 		}
+		return isReverse(list,k-1, n);				
 	}
 }
 
