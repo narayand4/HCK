@@ -49,7 +49,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q47();
+		q52();
 	}
 	
 	public static void q1(){
@@ -989,6 +989,135 @@ public class Main {
 		}
 		return isReverse(list,k-1, n);				
 	}
+	
+	private static void q48(){
+		Scanner in = new Scanner(System.in);
+        int s = in.nextInt();
+        int t = in.nextInt();
+        int a = in.nextInt();
+        int b = in.nextInt();
+        int m = in.nextInt();
+        int n = in.nextInt();
+        int aCount = 0;
+        int oCount = 0;
+        for(int apple_i=0; apple_i < m; apple_i++){
+            int apple = in.nextInt();
+            if(apple+a >= s && apple+a <= t)
+            	aCount++;
+        }
+        for(int orange_i=0; orange_i < n; orange_i++){
+            int orange = in.nextInt();
+            if(orange+b >= s && orange+b <= t)
+            	oCount++;
+        }
+        System.out.println(aCount);
+        System.out.println(oCount);
+	}
+	
+	private static void q49(){
+		Scanner in = new Scanner(System.in);
+        int x1 = in.nextInt();
+        int v1 = in.nextInt();
+        int x2 = in.nextInt();
+        int v2 = in.nextInt();
+        if(x1 >= 0 && x1 <= 10000 && x2 >= 0 && x2 <= 10000 && v1 >=1 && v1 <= 10000 && v2 >=1 && v2 <= 10000){
+        	int mod = (v1-v2 > 0) ? ((x2-x1)%(v1-v2)) : 1;
+	        if((v1 > v2) && mod==0)
+	        	System.out.println("YES");
+	        else
+	        	System.out.println("NO");
+        }
+	}
+	
+	private static void q50(){
+		Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int[] a = new int[n];
+        for(int a_i=0; a_i < n; a_i++){
+            a[a_i] = in.nextInt();
+        }
+        int[] b = new int[m];
+        for(int b_i=0; b_i < m; b_i++){
+            b[b_i] = in.nextInt();
+        }
+        Arrays.sort(a);
+        Arrays.sort(b);
+        int min = a[0];
+        int max = b[0];
+        int count=0;
+        //System.out.println(max+" "+min);
+        for(int i=min;i<=max;i++){
+            if(hasFactors(i,a) && isFactor(i,b)){
+                count++;
+            }
+        }
+        System.out.println(count);
+	}
+	private static boolean hasFactors(int num, int[] arr){
+        for(int i=0;i<arr.length;i++){
+            if(num%arr[i]!=0){
+            	System.out.println("has: "+num+": "+arr[i]);
+                return false;
+            }
+        }
+        return true;
+    }    
+    private static boolean isFactor(int num, int[] arr){
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]%num!=0){
+            	System.out.println("is: "+num+": "+arr[i]);
+            	return false;
+            }
+        }
+        return true;
+    }
+    
+    private static void q51(){
+    	Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int k = in.nextInt();
+        int a[] = new int[n];
+        for(int a_i=0; a_i < n; a_i++){
+            a[a_i] = in.nextInt();
+        }
+        System.out.println(sumPairs(a, k, 0, 1, 0));
+    }
+    private static int sumPairs(int a[], int k, int i, int j, int count){
+    	System.out.println(i+","+j+","+count);
+    	int aLength = a.length-1;
+    	if(i==aLength-1)
+    		return count;     	
+    	if(j<=aLength){
+    		if(j==aLength){
+        		i++; j = i;
+        	}
+	    	int r = a[i]+a[j];
+	    	if(r%k==0) count++;
+    	}
+    	return sumPairs(a, k, i, j+1, count);
+    }
+    
+    private static void q52(){
+    	Scanner in = new Scanner(System.in);
+    	int n = in.nextInt();
+    	int k = in.nextInt();
+    	int a = 0,t = 0;
+    	for(int i=0;i<n;i++){
+    		int c = in.nextInt();
+    		if(k!=i)
+    			a = a+c;
+    		t = t+c;
+    	}
+    	int b = in.nextInt();
+    	int totalShared = t/2;
+    	int shared = a/2;
+    	
+    	if(b==shared)
+    		System.out.println("Bon Appetit");
+    	else
+    		System.out.println(totalShared-shared);
+    }
 }
 
 class MyRegex{
