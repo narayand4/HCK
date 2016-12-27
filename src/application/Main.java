@@ -49,7 +49,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q52();
+		q53();
 	}
 	
 	public static void q1(){
@@ -1117,6 +1117,34 @@ public class Main {
     		System.out.println("Bon Appetit");
     	else
     		System.out.println(totalShared-shared);
+    }
+    private static void q53(){
+    	Scanner in = new Scanner(System.in);
+    	String s = in.next();
+    	List<String> list = new ArrayList<String>();
+    	for(int i=0;i<s.split("").length;i++)
+    		list.add(s.split("")[i]);
+    	System.out.println(checkSting(list, 0));
+    }
+    private static String checkSting(List<String> list, int i){
+    	if(list.size()==0)
+    		return "";
+    	if(list.size()==1)
+    		return list.toString();
+    	if(list.size()==i)
+    		return "n";
+    	
+    	System.out.println("i: "+i+", size: "+list.size()+", first: "+list.get(i)+", second:"+list.get(i+1));
+    	System.out.println(list);
+    	if(list.get(i).equals(list.get(i+1))){
+    		list.remove(i);
+    		list.remove(i);
+    		System.out.println("Removed");
+    		//i=0;
+    	}else
+    		i=i+1;
+    	
+		return checkSting(list, i);    	
     }
 }
 
