@@ -49,7 +49,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q53();
+		q56();
 	}
 	
 	public static void q1(){
@@ -1145,6 +1145,31 @@ public class Main {
     		i=i+1;
     	
 		return checkSting(list, i);    	
+    }
+    
+    private static void q55(){
+    	Scanner in = new Scanner(System.in);
+    	int V = in.nextInt();
+    	int n = in.nextInt();
+    	int ar[] = new int[n];
+    	List<Integer> list = new ArrayList<Integer>();
+    	for(int i=0; i<n; i++){
+    		int a = in.nextInt();
+    		list.add(a);
+    	}
+    	System.out.println(list.indexOf(V));
+    }
+    
+    private static void q56(){
+    	Scanner in = new Scanner(System.in);
+    	int T = in.nextInt();
+    	int n = in.nextInt();
+    	int ar[] = new int[n];
+    	List<Integer> list = new ArrayList<Integer>();
+    	for(int i=0; i<n; i++){
+    		int a = in.nextInt();
+    		list.add(a);
+    	}    	
     }
 }
 
