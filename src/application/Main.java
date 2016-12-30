@@ -49,7 +49,7 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		q56();
+		q57();
 	}
 	
 	public static void q1(){
@@ -1170,6 +1170,37 @@ public class Main {
     		int a = in.nextInt();
     		list.add(a);
     	}    	
+    }
+    
+    private static void q57(){
+    	Scanner in = new Scanner(System.in);
+    	int T = in.nextInt();
+        int N = in.nextInt();
+        for(int i=0; i<T; i++){
+        	List<Integer> list = new ArrayList<Integer>();
+	        for(int j=0; j<N; j++){
+	        	int a = in.nextInt();
+	        	list.add(a);
+	        }
+	        Collections.sort(list);
+	        equal(list,list.get(0), 1, -1);
+        }
+    }
+    private static int equal(List<Integer> list, int baseLine, int i, int d){
+    	if(i==list.size())
+    		return 0;
+    	if(baseLine!=list.get(i)){
+    		if((list.get(i)-1)==baseLine){
+    			list.set(i, (list.get(i)-1));
+    		}else if((list.get(i)-2)==baseLine){
+    			list.set(i, (list.get(i)-1));
+    		}else if((list.get(i)-5)==baseLine){
+    			list.set(i, (list.get(i)-1));
+    		}
+    		System.out.println(list.get(i));
+    	}
+    	
+    	return equal(list, baseLine, i = i+1, 0);
     }
 }
 
