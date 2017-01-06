@@ -49,8 +49,11 @@ public class Main {
 	}*/
 	
 	public static void main(String[] args) {
-		DpAlgo dp = new DpAlgo();
-		dp.dpCoinChange();
+		//DpAlgo dp = new DpAlgo();
+		//dp.dpCoinChange();
+		
+		GpAlgo gp = new GpAlgo();
+		gp.gpEvenTree();
 	}
 	
 	public static void q1(){
