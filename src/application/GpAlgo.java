@@ -16,10 +16,10 @@ public class GpAlgo {
 		Scanner in = new Scanner(System.in);
 		int vertices = in.nextInt();
 		if(vertices>=2 && vertices<=100){
-			int n = in.nextInt();
+			int edges = in.nextInt();
 			final Node<Integer>[] treeNodes = (Node<Integer>[]) new Node[vertices];
 			
-			for(int i=0; i<n; i++){
+			for(int i=0; i<edges; i++){
 				final int node1 = in.nextInt() - 1;
 				final int node2 = in.nextInt() - 1;
 								
@@ -42,14 +42,13 @@ public class GpAlgo {
 	private static int[] decomposeTree(Node<Integer> node) {		
 		int count = 0, edgesToRemove = 0;
 		for(Node<Integer> childNode : node.childNodes) {
-			System.out.println(childNode.toString());
 			final int[] tmpMetadata = decomposeTree(childNode);
 			edgesToRemove += tmpMetadata[1];
 			if(tmpMetadata[0] % 2 == 0) {
 				edgesToRemove++;
 			} else {
 				count += tmpMetadata[0];
-			}
+			}			
 		}
 		count++;
 		return new int[]{count, edgesToRemove};

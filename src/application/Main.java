@@ -52,8 +52,16 @@ public class Main {
 		//DpAlgo dp = new DpAlgo();
 		//dp.dpCoinChange();
 		
-		GpAlgo gp = new GpAlgo();
-		gp.gpEvenTree();
+		/*GpAlgo gp = new GpAlgo();
+		gp.gpEvenTree();*/
+		
+		//StringAlgo sg = new StringAlgo();
+		//sg.sosMessage();
+		/*sg.camelCase();*/
+		
+		ImpAlgo ig = new ImpAlgo();
+		ig.equalArray();
+		//ig.sockMerchent();
 	}
 	
 	public static void q1(){
