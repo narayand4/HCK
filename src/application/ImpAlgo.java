@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,23 +38,39 @@ public class ImpAlgo {
 			list.add(a);
 		}
 		Collections.sort(list);
-		System.out.println(list);
-		System.out.println(popUnEqual(list, list.size(), 0, 0));
+		System.out.println(getMaxArrayCount(list));
 	}
-	//78
-	//24 29 70 43 12 27 29 24 41 12 41 43 24 70 24 100 41 43 43 100 29 70 100 43 41 27 70 70 59 41 24 24 29 43 24 27 70 24 27 70 24 70 27 24 43 27 100 41 12 70 43 70 62 12 59 29 62 41 100 43 43 59 59 70 12 27 43 43 27 27 27 24 43 43 62 43 70 29
-	//63
-	private static int popUnEqual(List<Integer> list, int i, int count, int index){
-		if(i==0) return count;
-		if(list.size()==1) return 0;
-		System.out.println(list);
-		index = index+1;
-		if(list.get(index)!=list.get(index+1)){
-			//System.out.println("sadasd");
-			//list.remove(0);
-			count = count+1;
-			//index = index-1;
+	private static int getMaxArrayCount(List<Integer> list){
+		int preEle = 0, sumEqualEle = 1;
+		HashMap<Integer,Integer> eqArr=new HashMap<Integer,Integer>();  
+		for(int i=0; i<list.size(); i++){
+			int ele = list.get(i);
+			if(ele==preEle)
+				sumEqualEle++;
+			else
+				sumEqualEle = 1;			
+			eqArr.put(ele,sumEqualEle);			
+			preEle = ele;
 		}
-		return popUnEqual(list, (i = i-1), count, index);
+		int maxValueInMap=(Collections.max(eqArr.values()));
+		return (maxValueInMap>0) ? (list.size() - maxValueInMap) : 0;
+	}
+	
+	public void repetedString(){
+		Scanner in = new Scanner(System.in);
+	    String s = in.next();
+	    long n = in.nextLong();
+	    long count =0;
+	    for(char c : s.toCharArray())
+	        if(c == 'a')
+	        count++;
+
+	     long factor = (n/s.length());
+	     long rem = (n%s.length());
+	     count =  factor*count  ;
+	    for(int i=0;i<rem;i++)
+	        if(s.charAt(i)=='a')
+	                count++;        
+	    System.out.println(count);
 	}
 }
