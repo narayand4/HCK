@@ -56,7 +56,7 @@ public class ImpAlgo {
 		return (maxValueInMap>0) ? (list.size() - maxValueInMap) : 0;
 	}
 	
-	public void repetedString(){
+	public void repetedStringbck(){
 		Scanner in = new Scanner(System.in);
 	    String s = in.next();
 	    long n = in.nextLong();
@@ -72,5 +72,27 @@ public class ImpAlgo {
 	        if(s.charAt(i)=='a')
 	                count++;        
 	    System.out.println(count);
+	}
+	
+	public void repetedString(){
+		Scanner in = new Scanner(System.in);
+	    String s = in.next();
+	    long n = in.nextLong();
+	    String[] arrStr = s.split("");
+	    String finalString = getConcatString(arrStr, n, 0,"");
+	    long count =0;
+	    for(char c : finalString.toCharArray())
+	        if(c == 'a')
+	        	count++;
+	    System.out.println(count);
+	}
+	private static String getConcatString(String[] arrStr, long n, long count, String finalString){
+		if(count==n) return finalString;
+		for(int i=0; i<arrStr.length; i++){
+			finalString += arrStr[i];
+			count = count+1;
+			if(count==n) break;
+		}
+		return getConcatString(arrStr, n, count,finalString);
 	}
 }
