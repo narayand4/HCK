@@ -60,7 +60,7 @@ public class Main {
 		/*sg.camelCase();*/
 		
 		ImpAlgo ig = new ImpAlgo();
-		ig.repetedString();
+		ig.beautifulDays();
 		//ig.equalArray();
 		//ig.sockMerchent();
 	}

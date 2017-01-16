@@ -95,4 +95,48 @@ public class ImpAlgo {
 		}
 		return getConcatString(arrStr, n, count,finalString);
 	}
+	
+	protected void advertise(){
+		Scanner in = new Scanner(System.in);
+		int days = in.nextInt();
+		long noofPerson = 5, totalPerson = 0;
+		for(int i=0; i<days; i++){ 
+			if(i>0) noofPerson = (long) (Math.floor(noofPerson/2) * 3);		
+			totalPerson += (noofPerson/2);
+		}
+		System.out.println(totalPerson);
+	}
+	
+	protected void cloudJump(){
+		Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int c[] = new int[n];
+        for(int i=0; i < n; i++){
+            c[i] = in.nextInt();
+        }
+        int count = -1;
+        for (int i = 0; i < n; i++, count++) {
+            if (i<n-2 && c[i+2]==0) i++;
+        }
+        System.out.println(count);
+	}
+	
+	protected void beautifulDays(){
+		Scanner in = new Scanner(System.in);
+		int daysStart = in.nextInt();
+		int daysEnd = in.nextInt();
+		int k = in.nextInt();
+		for(int i=daysStart; i<=daysEnd; i++){
+			int input = reversedNumber(i);
+			System.out.println(input);
+		}		
+	}
+	private static int reversedNumber(int i){
+		int reversedNum = i, input = i;
+		while (input != 0) {
+		    reversedNum = reversedNum * 10 + input % 10;
+		    input = input / 10;   
+		}
+		return input;
+	}
 }
