@@ -126,17 +126,30 @@ public class ImpAlgo {
 		int daysStart = in.nextInt();
 		int daysEnd = in.nextInt();
 		int k = in.nextInt();
+		int sum = 0;
 		for(int i=daysStart; i<=daysEnd; i++){
 			int input = reversedNumber(i);
-			System.out.println(input);
+			double mod = (((input>i) ? (input-i) : (i-input)) % k);
+			if(mod==0) sum++;
 		}		
+		System.out.println(sum);
 	}
-	private static int reversedNumber(int i){
-		int reversedNum = i, input = i;
-		while (input != 0) {
-		    reversedNum = reversedNum * 10 + input % 10;
-		    input = input / 10;   
+	private static int reversedNumber(int n){
+		int reverse = 0;
+		 while( n != 0 )
+	      {
+	          reverse = reverse * 10;
+	          reverse = reverse + n%10;
+	          n = n/10;
+	      }
+		 return reverse;
+	}
+	
+	protected void minimumDays(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		for(int i=0; i<n; i++){
+			int a = in.nextInt();
 		}
-		return input;
 	}
 }
