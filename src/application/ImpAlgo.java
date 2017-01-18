@@ -148,8 +148,21 @@ public class ImpAlgo {
 	protected void minimumDays(){
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
+		List<Integer> list = new ArrayList<Integer>();
 		for(int i=0; i<n; i++){
 			int a = in.nextInt();
+			list.add(a);
 		}
+		for(int i=0; i<list.size(); i++) getIndex(list, i);
+		System.out.println(list);
+	}
+	private static int getIndex(List<Integer> list, int i){
+		int diff = 0;
+		int a = list.get(i);
+		int index = list.indexOf(a);
+		System.out.println(i+", "+index);
+		if(index!=i) diff = index-1;
+		//System.out.println(diff);
+		return diff;
 	}
 }
