@@ -145,24 +145,53 @@ public class ImpAlgo {
 		 return reverse;
 	}
 	
-	protected void minimumDays(){
+	protected void minimumDistance(){
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
+		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> minList = new ArrayList<Integer>();
+		for(int i=0; i<n; i++){
+			int a = in.nextInt();
+			list.add(a);
+		}
+		for(int i=0; i<list.size(); i++){ 
+			int a = list.get(i);
+			int index = list.indexOf(a);
+			if(index!=i){
+				minList.add(i-index);
+			}
+		}
+		Collections.sort(minList);
+		int result = (minList.size() > 0) ? minList.get(0) : -1;
+		System.out.println(result);
+	}
+	
+	protected void jumpingOnTheCloud(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int k = in.nextInt();
 		List<Integer> list = new ArrayList<Integer>();
 		for(int i=0; i<n; i++){
 			int a = in.nextInt();
 			list.add(a);
 		}
-		for(int i=0; i<list.size(); i++) getIndex(list, i);
-		System.out.println(list);
+		System.out.println(getMove(list, k));
 	}
-	private static int getIndex(List<Integer> list, int i){
-		int diff = 0;
-		int a = list.get(i);
-		int index = list.indexOf(a);
-		System.out.println(i+", "+index);
-		if(index!=i) diff = index-1;
-		//System.out.println(diff);
-		return diff;
+	private int getMove(List<Integer> list, int k){
+		int e = 100;
+		for(int j=0; j<list.size(); j = (j+k)){
+			if(list.get(j)==0) e = e-1; else e = e-3;
+		}
+		return e;
+	}
+	
+	protected void pdfViewer(){
+		System.out.println("Hello");
+		Scanner in = new Scanner(System.in);
+		for(int i=0; i<26; i++){
+			int a = in.nextInt();
+		}
+		String word = in.next();
+		System.out.println(word);
 	}
 }
