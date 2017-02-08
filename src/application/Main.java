@@ -1,5 +1,12 @@
 package application;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.Permission;
@@ -23,6 +30,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,13 +64,56 @@ public class Main {
 		gp.gpEvenTree();*/
 		
 		//StringAlgo sg = new StringAlgo();
+		//sg.stringAppend();
 		//sg.sosMessage();
 		/*sg.camelCase();*/
 		
 		ImpAlgo ig = new ImpAlgo();
-		ig.pdfViewer();
+		ig.beautifulTriplets();
+		//ig.savePrisner();
+		//ig.pdfViewer();
 		//ig.equalArray();
 		//ig.sockMerchent();
+		
+		//fileHandling();
+		//printDuplicateValues();
+	}
+	
+	private static void printDuplicateValues(){
+		ArrayList<String> names = new ArrayList<>();
+		names.add("Durgesh");
+		names.add("Pulak");
+		names.add("Monika");
+		names.add("Anita");
+		names.add("Anil");
+		names.add("Nilam");
+		names.add("Anay");
+		names.add("Durgesh");
+		names.add("Anita");
+		names.add("Pulak");
+		Set<String> hSet = new HashSet<>();
+		for(String name : names){
+			if(hSet.add(name)==false)
+				System.out.println(name);
+		}
+	}
+	
+	private static void fileHandling(){
+		try {
+			File file = new File("demo.txt");
+			FileOutputStream fos = new FileOutputStream(file);
+			DataOutputStream dos = new DataOutputStream(fos);
+			dos.writeUTF("Hello Durgesh Narayan");
+			
+			FileInputStream fis = new FileInputStream(file);
+			DataInputStream dis = new DataInputStream(fis);
+			String str = dis.readUTF();
+			System.out.println(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public static void q1(){

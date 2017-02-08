@@ -186,12 +186,59 @@ public class ImpAlgo {
 	}
 	
 	protected void pdfViewer(){
-		System.out.println("Hello");
 		Scanner in = new Scanner(System.in);
-		for(int i=0; i<26; i++){
-			int a = in.nextInt();
-		}
+		int n = 26;
+		int h[] = new int[n];
+        for(int h_i=0; h_i < n; h_i++){
+            h[h_i] = in.nextInt();
+        }
 		String word = in.next();
-		System.out.println(word);
+		HashMap<Character,Integer> alphabets=new HashMap<Character,Integer>();
+		int i=0;
+		for(char ch='a';ch<='z';ch++){
+			alphabets.put(ch, h[i]);
+			i++;
+		}
+		int max=0;
+		int length=word.length();
+		for(int j=0; j<length; j++){
+			int val=alphabets.get(word.charAt(j));
+            if(val>max)
+                max=val;
+		}
+		System.out.println(max*length);
+	}
+	
+	protected void savePrisner(){
+		Scanner s = new Scanner(System.in);
+		int t = s.nextInt();
+		for(int i=0; i<t; i++){
+            int p = s.nextInt();
+            int m = s.nextInt();
+            int id = s.nextInt();
+            if((m+id-1)%p==0)
+            System.out.println(p);
+            else 
+            System.out.println((m+id-1)%p);
+        }
+	}
+	
+	protected void beautifulTriplets(){
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int d = in.nextInt();
+		List<Integer> list = new ArrayList<Integer>();
+		for(int i=0; i<n; i++){
+			int a = in.nextInt();
+			list.add(a);
+		}
+		int k=0;
+		for(int j=0; j<list.size(); j++){
+			int b = list.get(j);
+			int c = b+d;
+			int f = b+2*d;
+			if(list.contains(c) && list.contains(f)) k++;
+		}
+		System.out.println(k);
 	}
 }

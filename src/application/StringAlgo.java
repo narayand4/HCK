@@ -1,6 +1,8 @@
 package application;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,6 +37,20 @@ public class StringAlgo {
 					count++;
 			}
 		}
-		System.out.println(count);
+		System.out.println(count);	
+	}
+	
+	public void stringAppend(){
+		Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        for(int a0 = 0; a0 < n; a0++){
+        	Set newStr = new HashSet<>();
+            String s = in.next();
+            char[] c = s.toCharArray();
+            for(char ch: c){
+            	newStr.add(ch);
+            }
+            System.out.println(newStr.size());
+        }
 	}
 }
