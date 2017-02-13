@@ -69,7 +69,8 @@ public class Main {
 		/*sg.camelCase();*/
 		
 		ImpAlgo ig = new ImpAlgo();
-		ig.beautifulTriplets();
+		//ig.strangeCounter();
+		//ig.beautifulTriplets();
 		//ig.savePrisner();
 		//ig.pdfViewer();
 		//ig.equalArray();
@@ -77,6 +78,51 @@ public class Main {
 		
 		//fileHandling();
 		//printDuplicateValues();
+		//labeledBreak();
+		//innerClassTest();
+		//varArgs(1, 2, 3, 4);
+		methodRefrence();
+	}
+	
+	private static void methodRefrence(){
+		List<Integer> values = Arrays.asList(1,2,3,4,5,6,7,8,9);
+		values.forEach(Main::doubleIt);
+	}
+	
+	private static void doubleIt(int i){
+		System.out.println(i*2);
+	}
+	
+	protected static void varArgs(int...arr){
+		for(int ar : arr){
+			System.out.println(ar);
+		}
+	}
+	
+	protected static void innerClassTest(){
+		//A obj = new A();
+		//A.B obj1 = obj.new B();
+		/*A.B obj1 = obj.new B(){
+			public void show(){
+				System.out.println("Hi");
+			}
+		};*/
+		
+		C obj1 = () -> {
+			System.out.println("Hi");
+		};
+		obj1.show();
+	}
+	
+	protected static void labeledBreak(){
+		outerloop: 
+		for(int i=0; i<8; i++){
+			for(int j=0; j<i; j++){
+				if(j==3) break outerloop;
+				System.out.print("* ");
+			}
+			System.out.println("");
+		}
 	}
 	
 	private static void printDuplicateValues(){
@@ -1255,6 +1301,22 @@ public class Main {
 		}
 		return fibonacci; 
 	}    
+}
+
+class A{
+	public void show(){
+		System.out.println("In Show.");
+	}
+	class B{
+		public void show(){
+			System.out.println("Inner show.");
+		}
+	}
+}
+
+@FunctionalInterface
+interface C {
+	public void show();
 }
 
 class MyRegex{

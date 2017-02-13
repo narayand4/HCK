@@ -241,4 +241,15 @@ public class ImpAlgo {
 		}
 		System.out.println(k);
 	}
+	
+	protected void strangeCounter(){
+		Scanner in = new Scanner(System.in);
+		long n = in.nextLong();
+		long a = 3;
+		while(n > a){
+			n = n-a;
+			a = a*2;
+		}
+		System.out.println(a-n+1);		
+	}	
 }
