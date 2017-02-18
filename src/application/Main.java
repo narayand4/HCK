@@ -35,6 +35,7 @@ import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+import java.sql.*;
 
 public class Main {
 	/*private static boolean flag = true;
@@ -81,12 +82,61 @@ public class Main {
 		//labeledBreak();
 		//innerClassTest();
 		//varArgs(1, 2, 3, 4);
-		methodRefrence();
+		//methodRefrence();
+		
+		databaseConnection();
+	}
+	
+	private static void databaseConnection(){
+		try{
+			String url = "jdbc:mysql://localhost:3306/pulakdb";
+			String username = "durgesh";
+			String password = "qaz#123";
+			String query = "SELECT * FROM countries";
+			
+			//Define Driver
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			//Establish connection
+			Connection con = DriverManager.getConnection(url,username,password);
+			
+			//Fetch Data
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()){
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				System.out.println("id:"+id+", name: "+name);
+			}
+			
+			//Insert, Update
+			String insertQuery = "INSERT INTO countries (name) VALUES (?)";
+			PreparedStatement prSt = con.prepareStatement(insertQuery);
+			prSt.setString(1, "USA");
+			prSt.executeUpdate();			
+			st.close();
+			con.close();
+		} catch(Exception ex){
+			System.out.println(ex.getMessage());
+		}
 	}
 	
 	private static void methodRefrence(){
 		List<Integer> values = Arrays.asList(1,2,3,4,5,6,7,8,9);
-		values.forEach(Main::doubleIt);
+		List<Integer> values2 = Arrays.asList(12,20,35,46,55,68,75);
+		//values.forEach(Main::doubleIt);
+		//System.out.println(values.stream().map(i -> i*2).reduce(0, (c, e) -> c+e));
+		//System.out.println(values.stream().map(i -> i*2).reduce(0, (c, e) -> Integer.sum(c, e)));
+		System.out.println(values.stream().map(i -> i*2).reduce(0, Integer::sum));
+		System.out.println(values2.stream().filter(i -> i%5==0).reduce(0, Integer::sum));
+		System.out.println(values2.stream().filter(i -> i%5==0).map(i -> i*2).reduce(0, Integer::sum));
+		System.out.println(
+				values2.stream()
+				.filter(i -> i%5==0)
+				.map(i -> i*2)
+				.findFirst()
+				.orElse(0)
+		);
 	}
 	
 	private static void doubleIt(int i){
