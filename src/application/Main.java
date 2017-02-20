@@ -64,12 +64,13 @@ public class Main {
 		/*GpAlgo gp = new GpAlgo();
 		gp.gpEvenTree();*/
 		
-		//StringAlgo sg = new StringAlgo();
+		StringAlgo sg = new StringAlgo();
 		//sg.stringAppend();
 		//sg.sosMessage();
 		/*sg.camelCase();*/
+		sg.beautifulString();
 		
-		ImpAlgo ig = new ImpAlgo();
+		//ImpAlgo ig = new ImpAlgo();
 		//ig.strangeCounter();
 		//ig.beautifulTriplets();
 		//ig.savePrisner();
@@ -82,9 +83,9 @@ public class Main {
 		//labeledBreak();
 		//innerClassTest();
 		//varArgs(1, 2, 3, 4);
-		//methodRefrence();
-		
-		databaseConnection();
+		//methodRefrence();		
+		//databaseConnection();
+		//daoDemo();
 	}
 	
 	private static void databaseConnection(){
@@ -118,6 +119,21 @@ public class Main {
 			con.close();
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
+		}
+	}
+	
+	private static void daoDemo(){
+		CountryDao cDao = new CountryDao();		
+		Country ct = new Country();
+		
+		//Add new 
+		ct.setName("Verginiya");
+		cDao.addCountry(ct);
+		
+		//Get All 
+		List<Country> cList = cDao.getCountry(0);
+		for(Country country : cList){
+			System.out.println(country.getId()+". "+country.getName());
 		}
 	}
 	

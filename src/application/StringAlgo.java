@@ -53,4 +53,11 @@ public class StringAlgo {
             System.out.println(newStr.size());
         }
 	}
+	
+	public void beautifulString(){
+		Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        String B = in.next(); 
+        System.out.println((B.length() - B.replaceAll("010", "").length())/3);
+	}
 }
