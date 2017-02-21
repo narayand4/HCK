@@ -57,7 +57,15 @@ public class StringAlgo {
 	public void beautifulString(){
 		Scanner in = new Scanner(System.in);
         int n = in.nextInt();
-        String B = in.next(); 
-        System.out.println((B.length() - B.replaceAll("010", "").length())/3);
+        String B = in.next();
+        
+        String regex = "(010)";
+        Pattern p = Pattern.compile(regex, Pattern.MULTILINE+Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(B);
+        int count = 0;
+        while (m.find()) {
+        	count++;
+        }
+        System.out.println(count);        
 	}
 }
