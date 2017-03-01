@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -251,5 +252,34 @@ public class ImpAlgo {
 			a = a*2;
 		}
 		System.out.println(a-n+1);		
-	}	
+	}
+        
+        protected void flatLandSpace(){
+            Scanner in = new Scanner(System.in);
+            int n = in.nextInt();
+            int m = in.nextInt();
+            LinkedList<Integer> al=new LinkedList<Integer>();
+            for(int i=0; i<m; i++){
+                int ci = in.nextInt();
+                al.add(ci);
+            }
+            
+            LinkedList<Integer> llist=new LinkedList<Integer>();
+            for (int j = 0; j < n; j++) {
+                LinkedList<Integer> minmax=new LinkedList<Integer>();
+                for (int k = 0; k < al.size(); k++) {
+                    int a;
+                    if(al.get(k) < j){
+                        a = j-al.get(k);
+                    }else{
+                        a = al.get(k)-j;
+                    }
+                    minmax.add(a);
+                }
+                Integer min = Collections.min(minmax);
+                llist.add(min);
+            }
+            Integer max = Collections.max(llist);
+            System.out.println(max);
+        }
 }

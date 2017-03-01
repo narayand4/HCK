@@ -64,20 +64,21 @@ public class Main {
 		/*GpAlgo gp = new GpAlgo();
 		gp.gpEvenTree();*/
 		
-		StringAlgo sg = new StringAlgo();
+		//StringAlgo sg = new StringAlgo();
 		//sg.stringAppend();
 		//sg.sosMessage();
 		/*sg.camelCase();*/
-		sg.beautifulString();
+		//sg.beautifulString();
 		
-		//ImpAlgo ig = new ImpAlgo();
+		ImpAlgo ig = new ImpAlgo();
 		//ig.strangeCounter();
 		//ig.beautifulTriplets();
 		//ig.savePrisner();
 		//ig.pdfViewer();
 		//ig.equalArray();
 		//ig.sockMerchent();
-		
+		ig.flatLandSpace();
+                
 		//fileHandling();
 		//printDuplicateValues();
 		//labeledBreak();
@@ -86,6 +87,9 @@ public class Main {
 		//methodRefrence();		
 		//databaseConnection();
 		//daoDemo();
+		
+		//Localization l = new Localization();
+		//l.localeDemo();
 	}
 	
 	private static void databaseConnection(){
