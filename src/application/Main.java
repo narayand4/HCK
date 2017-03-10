@@ -36,6 +36,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 	/*private static boolean flag = true;
@@ -70,15 +72,20 @@ public class Main {
 		/*sg.camelCase();*/
 		//sg.beautifulString();
 		
-		ImpAlgo ig = new ImpAlgo();
+		//ImpAlgo ig = new ImpAlgo();
 		//ig.strangeCounter();
 		//ig.beautifulTriplets();
 		//ig.savePrisner();
 		//ig.pdfViewer();
 		//ig.equalArray();
 		//ig.sockMerchent();
-		ig.flatLandSpace();
+		//ig.flatLandSpace();
+                //ig.studentsGrade();
+                //ig.hurdleRace();
+                //ig.sequenceEquation();
                 
+                //BitManuplationAlgo bma = new BitManuplationAlgo();
+                //bma.sumVsXor();
 		//fileHandling();
 		//printDuplicateValues();
 		//labeledBreak();
@@ -90,6 +97,36 @@ public class Main {
 		
 		//Localization l = new Localization();
 		//l.localeDemo();
+                
+                Runnable obj1 = new Runnable(){
+                    public void run(){
+                        for(int i=0; i<6; i++){
+                            System.out.println("Hi"); 
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(D.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                };
+                Thread t1 = new Thread(obj1);
+                t1.start();
+                                                
+                Runnable obj2 = new Runnable(){
+                    public void run(){
+                        for(int i=0; i<6; i++){
+                            System.out.println("Hello"); 
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(D.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                };
+                Thread t2 = new Thread(obj2);
+                t2.start();
 	}
 	
 	private static void databaseConnection(){
@@ -1410,4 +1447,30 @@ class DoNotTerminate {
 		};
 		System.setSecurityManager(securityManager);
 	}
+}
+
+class D extends Thread{
+    public void run(){
+        for(int i=0; i<6; i++){
+            System.out.println("Hi"); 
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(D.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+}
+
+class E extends Thread{
+    public void run(){
+        for(int i=0; i<6; i++){
+            System.out.println("Hello"); 
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(D.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }
